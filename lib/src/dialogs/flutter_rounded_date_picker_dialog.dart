@@ -25,6 +25,8 @@ class FlutterRoundedDatePickerDialog extends StatefulWidget {
       this.imageHeader,
       this.description = "",
       this.fontFamily,
+      this.buttonNegativeBuilder,
+      this.buttonPositiveBuilder,
       this.textNegativeButton,
       this.textPositiveButton,
       this.textActionButton,
@@ -61,6 +63,8 @@ class FlutterRoundedDatePickerDialog extends StatefulWidget {
   final String fontFamily;
 
   /// Button
+  final ButtonBuilder buttonNegativeBuilder;
+  final ButtonBuilder buttonPositiveBuilder;
   final String textNegativeButton;
   final String textPositiveButton;
   final String textActionButton;
@@ -215,6 +219,8 @@ class _FlutterRoundedDatePickerDialogState extends State<FlutterRoundedDatePicke
     final Widget picker = _buildPicker();
 
     final Widget actions = FlutterRoundedButtonAction(
+      buttonNegativeBuilder: widget.buttonNegativeBuilder,
+      buttonPositiveBuilder: widget.buttonPositiveBuilder,
       textButtonNegative: widget.textNegativeButton,
       textButtonPositive: widget.textPositiveButton,
       onTapButtonNegative: _handleCancel,

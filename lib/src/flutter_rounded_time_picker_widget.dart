@@ -1451,7 +1451,9 @@ class _TimePickerDialog extends StatefulWidget {
   ///
   /// [initialTime] must not be null.
   const _TimePickerDialog(
-      {Key key, @required this.initialTime, this.borderRadius, this.imageHeader, this.fontFamily, this.negativeBtn, this.positiveBtn, this.leftBtn, this.onLeftBtn, this.style})
+      {Key key, @required this.initialTime, this.borderRadius, this.imageHeader, this.fontFamily, this
+          .buttonNegativeBuilder, this.buttonPositiveBuilder, this
+      .negativeBtn, this.positiveBtn, this.leftBtn, this.onLeftBtn, this.style,})
       : assert(initialTime != null),
         super(key: key);
 
@@ -1466,6 +1468,9 @@ class _TimePickerDialog extends StatefulWidget {
 
   /// Font
   final String fontFamily;
+
+  final ButtonBuilder buttonNegativeBuilder;
+  final ButtonBuilder buttonPositiveBuilder;
 
   /// Custom 'CANCEL" button text
   final String negativeBtn;
@@ -1618,6 +1623,8 @@ class _TimePickerDialogState extends State<_TimePickerDialog> {
     );
 
     final Widget actions = FlutterRoundedButtonAction(
+      buttonNegativeBuilder: widget.buttonNegativeBuilder,
+      buttonPositiveBuilder: widget.buttonPositiveBuilder,
       textButtonNegative: widget.negativeBtn,
       onTapButtonNegative: _handleCancel,
       textButtonPositive: widget.positiveBtn,
@@ -1804,6 +1811,8 @@ Future<TimeOfDay> showRoundedTimePicker({
   String fontFamily,
   bool barrierDismissible = false,
   Color background = Colors.transparent,
+  ButtonBuilder buttonNegativeBuilder,
+  ButtonBuilder buttonPositiveBuilder,
   String negativeBtn,
   String positiveBtn,
   String leftBtn,
@@ -1825,6 +1834,8 @@ Future<TimeOfDay> showRoundedTimePicker({
     borderRadius: borderRadius,
     imageHeader: imageHeader,
     fontFamily: fontFamily,
+    buttonNegativeBuilder: buttonNegativeBuilder,
+    buttonPositiveBuilder: buttonPositiveBuilder,
     negativeBtn: negativeBtn,
     positiveBtn: positiveBtn,
     leftBtn: leftBtn,

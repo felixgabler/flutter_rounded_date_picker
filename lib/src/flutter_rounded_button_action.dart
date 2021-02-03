@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
+typedef ButtonBuilder = Widget Function(VoidCallback onTap);
+
 class FlutterRoundedButtonAction extends StatelessWidget {
+  final ButtonBuilder buttonNegativeBuilder;
+  final ButtonBuilder buttonPositiveBuilder;
   final String textButtonNegative;
   final String textButtonPositive;
   final String textActionButton;
@@ -18,6 +22,8 @@ class FlutterRoundedButtonAction extends StatelessWidget {
   const FlutterRoundedButtonAction(
       {Key key,
       @required this.localizations,
+      this.buttonNegativeBuilder,
+      this.buttonPositiveBuilder,
       this.textButtonNegative,
       this.textButtonPositive,
       this.textActionButton,
@@ -40,15 +46,19 @@ class FlutterRoundedButtonAction extends StatelessWidget {
           )
         : null;
 
-    final Widget negativeButton = FlatButton(
-      child: Text(
-        textButtonNegative ?? localizations.cancelButtonLabel,
-        style: textStyleButtonNegative,
-      ),
-      onPressed: onTapButtonNegative,
-    );
+    final Widget negativeButton = buttonNegativeBuilder != null
+        ? buttonNegativeBuilder(onTapButtonNegative)
+        : FlatButton(
+            child: Text(
+              textButtonNegative ?? localizations.cancelButtonLabel,
+              style: textStyleButtonNegative,
+            ),
+            onPressed: onTapButtonNegative,
+          );
 
-    final Widget positiveButton = FlatButton(
+    final Widget positiveButton = buttonPositiveBuilder != null
+        ? buttonPositiveBuilder(onTapButtonPositive)
+        : FlatButton(
       child: Text(
         textButtonPositive ?? localizations.okButtonLabel,
         style: textStyleButtonPositive,
