@@ -1805,6 +1805,7 @@ Future<TimeOfDay> showRoundedTimePicker({
   @required BuildContext context,
   @required TimeOfDay initialTime,
   ThemeData theme,
+  MaterialRoundedDatePickerStyle style,
   Locale locale,
   double borderRadius = 16.0,
   ImageProvider imageHeader,
@@ -1840,6 +1841,7 @@ Future<TimeOfDay> showRoundedTimePicker({
     positiveBtn: positiveBtn,
     leftBtn: leftBtn,
     onLeftBtn: onLeftBtn,
+    style: style,
   );
 
   Widget child = GestureDetector(
