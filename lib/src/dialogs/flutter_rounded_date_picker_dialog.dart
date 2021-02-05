@@ -14,6 +14,7 @@ class FlutterRoundedDatePickerDialog extends StatefulWidget {
   const FlutterRoundedDatePickerDialog(
       {Key key,
       this.height,
+      this.width,
       this.initialDate,
       this.firstDate,
       this.lastDate,
@@ -47,6 +48,7 @@ class FlutterRoundedDatePickerDialog extends StatefulWidget {
 
   /// double height.
   final double height;
+  final double width;
 
   /// Custom era year.
   final EraMode era;
@@ -261,6 +263,7 @@ class _FlutterRoundedDatePickerDialogState extends State<FlutterRoundedDatePicke
           case Orientation.portrait:
             return Container(
               height: widget.height,
+              width: widget.width,
               decoration: BoxDecoration(
                 color: backgroundPicker,
                 borderRadius: BorderRadius.circular(widget.borderRadius),

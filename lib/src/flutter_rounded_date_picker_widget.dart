@@ -94,6 +94,7 @@ typedef SelectableDayPredicate = bool Function(DateTime day);
 Future<DateTime> showRoundedDatePicker(
     {@required BuildContext context,
     double height,
+    double width,
     DateTime initialDate,
     DateTime firstDate,
     DateTime lastDate,
@@ -170,6 +171,7 @@ Future<DateTime> showRoundedDatePicker(
         },
         child: FlutterRoundedDatePickerDialog(
           height: height,
+          width: width,
           initialDate: initialDate,
           firstDate: firstDate,
           lastDate: lastDate,
