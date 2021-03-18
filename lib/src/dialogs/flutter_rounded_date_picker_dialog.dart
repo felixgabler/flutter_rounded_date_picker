@@ -298,13 +298,7 @@ class _FlutterRoundedDatePickerDialogState extends State<FlutterRoundedDatePicke
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   header,
-                  if (widget.height == null)
-                    Flexible(child: picker)
-                  else
-                    SizedBox(
-                      height: widget.height,
-                      child: picker,
-                    ),
+                  Expanded(child: picker),
                   actions,
                 ],
               ),
